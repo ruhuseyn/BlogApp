@@ -27,6 +27,8 @@ public class BlogEntity extends CoreEntity {
     Long viewCount;
     @Column(name = "cover_image_url")
     String coverImageUrl;
+    @Column(name = "fk_image_id", nullable = false)
+    String fkImageId;
 
 
 
