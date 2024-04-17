@@ -1,9 +1,9 @@
 package rufethuseynov.blogapp.dto.response;
 
-import jakarta.persistence.Column;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-import rufethuseynov.blogapp.dto.dto.WebBlogReadByIdDto;
+import rufethuseynov.blogapp.dto.dto.WebBlogReadDto;
+import rufethuseynov.blogapp.dto.dto.WebBlogReadImageDto;
 
 import java.util.List;
 
@@ -14,12 +14,7 @@ import java.util.List;
 @Builder
 public class WebBlogReadByIdResponse {
 
-    String name;
-    String title;
-    String content;
-    Long publishDate;
-    Long viewCount;
-    String coverImageUrl;
-    List<WebBlogReadByIdDto> webBlogReadByIdDtoList;
+    WebBlogReadDto webBlogReadDto;
+    List<WebBlogReadImageDto> webBlogReadByIdDtoList;
 
 }
