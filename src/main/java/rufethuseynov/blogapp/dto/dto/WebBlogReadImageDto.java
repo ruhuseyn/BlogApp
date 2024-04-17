@@ -1,6 +1,5 @@
 package rufethuseynov.blogapp.dto.dto;
 
-import jakarta.persistence.Column;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -9,7 +8,7 @@ import lombok.experimental.FieldDefaults;
 @Data
 @NoArgsConstructor
 @Builder
-public class WebBlogReadByIdDto {
+public class WebBlogReadImageDto {
 
     String imageUrl;
     String subTitle;
