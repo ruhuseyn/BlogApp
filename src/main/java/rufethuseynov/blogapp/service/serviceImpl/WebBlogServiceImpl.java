@@ -8,7 +8,9 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import rufethuseynov.blogapp.dto.dto.EntityByIdDto;
 import rufethuseynov.blogapp.dto.response.BlogPageResponse;
+import rufethuseynov.blogapp.dto.response.WebBlogReadByIdResponse;
 import rufethuseynov.blogapp.entity.BlogEntity;
 import rufethuseynov.blogapp.mapper.BlogMapper;
 import rufethuseynov.blogapp.repository.BlogRepository;
@@ -32,5 +34,11 @@ public class WebBlogServiceImpl implements WebBlogService {
                 userPage.getTotalPages(),
                 userPage.hasNext()
         );
+    }
+
+    @Override
+    public WebBlogReadByIdResponse getBlogById(EntityByIdDto dto) {
+
+        return null;
     }
 }
