@@ -19,4 +19,6 @@ public class ImageEntity extends CoreEntity {
     String imageUrl;
     @Column(name = "sub_title")
     String subTitle;
+    @Column(name = "fk_blog_id", nullable = false)
+    String fkBlogId;
 }
