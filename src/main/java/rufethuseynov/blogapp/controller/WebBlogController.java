@@ -6,12 +6,12 @@ import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import rufethuseynov.blogapp.dto.dto.EntityByIdDto;
 import rufethuseynov.blogapp.dto.response.BlogPageResponse;
+import rufethuseynov.blogapp.dto.response.WebBlogReadByIdResponse;
 import rufethuseynov.blogapp.service.WebBlogService;
 
 @Validated
@@ -25,10 +25,17 @@ public class WebBlogController {
     Logger logger = LoggerFactory.getLogger(WebBlogController.class);
 
 
-    @GetMapping("/blogs")
+    @GetMapping("/read-all")
+    @ResponseStatus(HttpStatus.OK)
     public BlogPageResponse getAllBlogs(@RequestParam(value = "page") int page, @RequestParam(value = "count") int count) {
         logger.info("getAll request accepted");
-        return webBlogService.getAllBlogs(page,count);
+        return webBlogService.getAllBlogs(page, count);
+    }
+
+    @PostMapping("/read-by-id")
+    @ResponseStatus(HttpStatus.OK)
+    public WebBlogReadByIdResponse getBlogById(@RequestBody EntityByIdDto dto) {
+        return webBlogService.getBlogById(dto);
     }
 
 
