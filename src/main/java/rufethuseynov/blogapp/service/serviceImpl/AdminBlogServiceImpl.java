@@ -33,7 +33,7 @@ public class AdminBlogServiceImpl implements AdminBlogService {
         blogRepository.save(blogEntity);
         List<ImageEntity> imageEntityList = dto.getImageSaveDtoList().stream().map(imageMapper::toImageEntity).toList();
         for(ImageEntity imageEntity: imageEntityList){
-
+            imageEntity.setFkBlogId(blogEntity.getId());
         }
         return null;
     }
