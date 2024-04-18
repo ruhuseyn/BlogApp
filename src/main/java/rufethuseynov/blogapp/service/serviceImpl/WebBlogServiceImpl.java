@@ -1,15 +1,12 @@
 package rufethuseynov.blogapp.service.serviceImpl;
 
-import jakarta.transaction.Transactional;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
-import lombok.extern.log4j.Log4j2;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import rufethuseynov.blogapp.dto.dto.EntityByIdDto;
-import rufethuseynov.blogapp.dto.dto.WebBlogReadDto;
 import rufethuseynov.blogapp.dto.response.BlogPageResponse;
 import rufethuseynov.blogapp.dto.response.WebBlogReadByIdResponse;
 import rufethuseynov.blogapp.entity.BlogEntity;
