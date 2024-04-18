@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import rufethuseynov.blogapp.dto.dto.EntityByIdDto;
 import rufethuseynov.blogapp.dto.response.BlogPageResponse;
 import rufethuseynov.blogapp.dto.response.WebBlogReadByIdResponse;
-import rufethuseynov.blogapp.service.WebBlogService;
+import rufethuseynov.blogapp.service.serviceImpl.WebBlogServiceImpl;
 
 @Validated
 @RestController
@@ -21,7 +21,7 @@ import rufethuseynov.blogapp.service.WebBlogService;
 @RequestMapping("/api/v1/web")
 public class WebBlogController {
 
-    WebBlogService webBlogService;
+    WebBlogServiceImpl webBlogService;
     Logger logger = LoggerFactory.getLogger(WebBlogController.class);
 
 
