@@ -9,9 +9,12 @@ import org.springframework.web.bind.annotation.*;
 import rufethuseynov.blogapp.dto.dto.AdminReadByStatusDto;
 import rufethuseynov.blogapp.dto.dto.CreateResponseDto;
 import rufethuseynov.blogapp.dto.dto.EntityByIdDto;
+import rufethuseynov.blogapp.dto.request.AdminBlogFilterRequestDto;
 import rufethuseynov.blogapp.dto.request.BlogSaveRequestDto;
+import rufethuseynov.blogapp.dto.response.AdminBlogFilterResponse;
 import rufethuseynov.blogapp.dto.response.AdminBlogReadResponse;
 import rufethuseynov.blogapp.service.serviceImpl.admin.AdminBlogDeleteService;
+import rufethuseynov.blogapp.service.serviceImpl.admin.AdminBlogFilterService;
 import rufethuseynov.blogapp.service.serviceImpl.admin.AdminBlogReadService;
 import rufethuseynov.blogapp.service.serviceImpl.admin.AdminBlogSaveService;
 
@@ -27,6 +30,7 @@ public class AdminBlogController {
     AdminBlogSaveService adminBlogSaveService;
     AdminBlogDeleteService adminBlogDeleteService;
     AdminBlogReadService adminBlogReadService;
+    AdminBlogFilterService adminBlogFilterService;
 
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
@@ -44,5 +48,11 @@ public class AdminBlogController {
     @ResponseStatus(HttpStatus.OK)
     public List<AdminBlogReadResponse> readAll(@RequestBody AdminReadByStatusDto dto){
         return adminBlogReadService.readAll(dto);
+    }
+
+    @PostMapping("/filter")
+    @ResponseStatus(HttpStatus.OK)
+    public List<AdminBlogFilterResponse> filterBlog(@RequestBody AdminBlogFilterRequestDto dto){
+        return adminBlogFilterService.filterBlog(dto);
     }
 }
