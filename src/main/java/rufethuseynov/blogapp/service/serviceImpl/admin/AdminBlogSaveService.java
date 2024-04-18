@@ -1,4 +1,4 @@
-package rufethuseynov.blogapp.service.serviceImpl;
+package rufethuseynov.blogapp.service.serviceImpl.admin;
 
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
@@ -12,21 +12,19 @@ import rufethuseynov.blogapp.mapper.BlogMapper;
 import rufethuseynov.blogapp.mapper.ImageMapper;
 import rufethuseynov.blogapp.repository.BlogRepository;
 import rufethuseynov.blogapp.repository.ImageRepository;
-import rufethuseynov.blogapp.service.AdminBlogService;
 
 import java.util.List;
 
 @Service
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 @RequiredArgsConstructor
-public class AdminBlogServiceImpl implements AdminBlogService {
+public class AdminBlogSaveService {
 
     BlogRepository blogRepository;
     ImageRepository imageRepository;
     BlogMapper blogMapper;
     ImageMapper imageMapper;
 
-    @Override
     public CreateResponseDto save(BlogSaveRequestDto dto) {
         BlogEntity blogEntity = blogMapper.toBlogEntity(dto.getBlogSaveDto());
         blogEntity.setViewCount(0L);
@@ -34,7 +32,9 @@ public class AdminBlogServiceImpl implements AdminBlogService {
         List<ImageEntity> imageEntityList = dto.getImageSaveDtoList().stream().map(imageMapper::toImageEntity).toList();
         for(ImageEntity imageEntity: imageEntityList){
             imageEntity.setFkBlogId(blogEntity.getId());
+            imageEntity.setIsCover("0");
+            imageRepository.save(imageEntity);
         }
-        return null;
+        return CreateResponseDto.builder().id(blogEntity.getId()).build();
     }
 }
