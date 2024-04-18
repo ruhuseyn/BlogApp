@@ -6,6 +6,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import rufethuseynov.blogapp.dto.dto.BlogSaveDto;
+import rufethuseynov.blogapp.dto.dto.ImageSaveDto;
+
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -15,4 +18,5 @@ import rufethuseynov.blogapp.dto.dto.BlogSaveDto;
 public class BlogSaveRequestDto {
 
     BlogSaveDto blogSaveDto;
+    List<ImageSaveDto> imageSaveDtoList;
 }
