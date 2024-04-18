@@ -3,16 +3,25 @@ package rufethuseynov.blogapp.controller;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import rufethuseynov.blogapp.dto.dto.CreateResponseDto;
+import rufethuseynov.blogapp.dto.request.BlogSaveRequestDto;
+import rufethuseynov.blogapp.service.serviceImpl.admin.AdminBlogSaveService;
 
 @Validated
 @RestController
 @RequiredArgsConstructor
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
-@RequestMapping("/api/v1/web")
+@RequestMapping("/api/v1/admin")
 public class AdminBlogController {
 
+    AdminBlogSaveService adminBlogSaveService;
 
+    @PostMapping("/save")
+    @ResponseStatus(HttpStatus.CREATED)
+    public CreateResponseDto save(@RequestBody BlogSaveRequestDto dto) {
+        return adminBlogSaveService.save(dto);
+    }
 }
