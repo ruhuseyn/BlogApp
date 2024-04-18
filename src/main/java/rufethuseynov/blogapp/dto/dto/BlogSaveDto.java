@@ -15,4 +15,5 @@ public class BlogSaveDto {
     String title;
     String content;
     Long publishDate;
+    String coverImageUrl;
 }
