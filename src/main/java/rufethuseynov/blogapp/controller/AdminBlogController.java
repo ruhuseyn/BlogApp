@@ -7,7 +7,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import rufethuseynov.blogapp.dto.dto.CreateResponseDto;
+import rufethuseynov.blogapp.dto.dto.EntityByIdDto;
 import rufethuseynov.blogapp.dto.request.BlogSaveRequestDto;
+import rufethuseynov.blogapp.service.serviceImpl.admin.AdminBlogDeleteService;
 import rufethuseynov.blogapp.service.serviceImpl.admin.AdminBlogSaveService;
 
 @Validated
@@ -18,10 +20,19 @@ import rufethuseynov.blogapp.service.serviceImpl.admin.AdminBlogSaveService;
 public class AdminBlogController {
 
     AdminBlogSaveService adminBlogSaveService;
+    AdminBlogDeleteService adminBlogDeleteService;
 
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
     public CreateResponseDto save(@RequestBody BlogSaveRequestDto dto) {
         return adminBlogSaveService.save(dto);
     }
+
+    @PostMapping("/delete")
+    @ResponseStatus(HttpStatus.CREATED)
+    public void deleteBlog(@RequestBody EntityByIdDto dto){
+        adminBlogDeleteService.deleteBlog(dto);
+    }
+
+
 }
