@@ -19,7 +19,7 @@ public class BlogEntity extends CoreEntity {
     String name;
     @Column(name = "title", nullable = false)
     String title;
-    @Column(name = "content", nullable = false)
+    @Column(name = "content", nullable = false, columnDefinition = "TEXT")
     String content;
     @Column(name = "publish_date", nullable = false)
     Long publishDate;
@@ -27,7 +27,4 @@ public class BlogEntity extends CoreEntity {
     Long viewCount;
     @Column(name = "cover_image_url")
     String coverImageUrl;
-
-
-
 }
