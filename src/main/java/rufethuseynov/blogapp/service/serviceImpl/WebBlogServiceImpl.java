@@ -15,21 +15,20 @@ import rufethuseynov.blogapp.mapper.BlogMapper;
 import rufethuseynov.blogapp.mapper.ImageMapper;
 import rufethuseynov.blogapp.repository.BlogRepository;
 import rufethuseynov.blogapp.repository.ImageRepository;
-import rufethuseynov.blogapp.service.WebBlogService;
 
 import java.util.List;
 
 @Service
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 @RequiredArgsConstructor
-public class WebBlogServiceImpl implements WebBlogService {
+public class WebBlogServiceImpl{
 
     BlogRepository blogRepository;
     BlogMapper blogMapper;
     ImageRepository imageRepository;
     ImageMapper imageMapper;
 
-    @Override
+
     public BlogPageResponse getAllBlogs(int page, int count) {
         Page<BlogEntity> userPage = blogRepository.findAll(PageRequest.of(page, count));
 
@@ -41,7 +40,7 @@ public class WebBlogServiceImpl implements WebBlogService {
         );
     }
 
-    @Override
+
     public WebBlogReadByIdResponse getBlogById(EntityByIdDto dto) {
         BlogEntity blogEntity = blogRepository.findById(dto.getId()).get();
         List<ImageEntity> imageList = imageRepository.findByFkBlogId(blogEntity.getId());
