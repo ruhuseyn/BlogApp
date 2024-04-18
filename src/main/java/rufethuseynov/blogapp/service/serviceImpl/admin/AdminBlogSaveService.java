@@ -28,11 +28,13 @@ public class AdminBlogSaveService {
     public CreateResponseDto save(BlogSaveRequestDto dto) {
         BlogEntity blogEntity = blogMapper.toBlogEntity(dto.getBlogSaveDto());
         blogEntity.setViewCount(0L);
+        blogEntity.setStatus("A");
         blogRepository.save(blogEntity);
         List<ImageEntity> imageEntityList = dto.getImageSaveDtoList().stream().map(imageMapper::toImageEntity).toList();
         for(ImageEntity imageEntity: imageEntityList){
             imageEntity.setFkBlogId(blogEntity.getId());
             imageEntity.setIsCover("0");
+            imageEntity.setStatus("A");
             imageRepository.save(imageEntity);
         }
         return CreateResponseDto.builder().id(blogEntity.getId()).build();
