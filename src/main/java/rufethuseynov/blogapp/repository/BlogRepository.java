@@ -11,4 +11,6 @@ import java.util.List;
 @Transactional
 public interface BlogRepository extends JpaRepository<BlogEntity, String> {
     List<BlogEntity> findAllByStatus(String a);
+    List<BlogEntity> findByNameContainingIgnoreCaseAndPublishDateBetween(String nameKeyword, Long minPublishDate, Long maxPublishDate);
+
 }
