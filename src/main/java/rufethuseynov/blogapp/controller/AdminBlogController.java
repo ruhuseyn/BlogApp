@@ -35,13 +35,13 @@ public class AdminBlogController {
     }
 
     @PostMapping("/delete")
-    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseStatus(HttpStatus.OK)
     public void deleteBlog(@RequestBody EntityByIdDto dto){
         adminBlogDeleteService.deleteBlog(dto);
     }
 
     @PostMapping("/read-all")
-    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseStatus(HttpStatus.OK)
     public List<AdminBlogReadResponse> readAll(@RequestBody AdminReadByStatusDto dto){
         return adminBlogReadService.readAll(dto);
     }
