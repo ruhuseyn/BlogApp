@@ -7,6 +7,7 @@ import rufethuseynov.blogapp.dto.dto.AdminBlogReadDto;
 import rufethuseynov.blogapp.dto.dto.BlogPageDto;
 import rufethuseynov.blogapp.dto.dto.BlogSaveDto;
 import rufethuseynov.blogapp.dto.dto.WebBlogReadDto;
+import rufethuseynov.blogapp.dto.response.AdminBlogFilterResponse;
 import rufethuseynov.blogapp.entity.BlogEntity;
 
 @Mapper(componentModel = "spring", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE, unmappedTargetPolicy = ReportingPolicy.IGNORE)
@@ -16,4 +17,5 @@ public interface BlogMapper {
     WebBlogReadDto toWebBlogReadDto(BlogEntity entity);
     BlogEntity toBlogEntity(BlogSaveDto dto);
     AdminBlogReadDto toAdminBlogReadDto(BlogEntity entity);
+    AdminBlogFilterResponse toAdminBlogFilterResponse(BlogEntity entity);
 }
