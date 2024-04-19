@@ -53,6 +53,6 @@ public class AdminBlogController {
     @PostMapping("/filter")
     @ResponseStatus(HttpStatus.OK)
     public List<AdminBlogFilterResponse> filterBlog(@RequestBody AdminBlogFilterRequestDto dto){
-        return adminBlogFilterService.filterBlog(dto);
+        return adminBlogFilterService.search(dto);
     }
 }

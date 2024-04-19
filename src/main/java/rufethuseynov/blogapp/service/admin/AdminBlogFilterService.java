@@ -1,13 +1,10 @@
 package rufethuseynov.blogapp.service.admin;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.criteria.CriteriaBuilder;
-import jakarta.persistence.criteria.CriteriaQuery;
-import jakarta.persistence.criteria.Predicate;
-import jakarta.persistence.criteria.Root;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import rufethuseynov.blogapp.dto.request.AdminBlogFilterRequestDto;
 import rufethuseynov.blogapp.dto.response.AdminBlogFilterResponse;
@@ -25,10 +22,8 @@ public class AdminBlogFilterService {
     BlogRepository blogRepository;
     BlogMapper blogMapper;
 
-    public List<AdminBlogFilterResponse> filterBlog(AdminBlogFilterRequestDto dto){
-        List<BlogEntity> response = blogRepository.findByNameContainingIgnoreCaseAndPublishDateBetween(
-                dto.getNameKeyword(), dto.getMinPublishDate(), dto.getMaxPublishDate());
-        return response.stream().map(blogMapper::toAdminBlogFilterResponse).toList();
+    public List<AdminBlogFilterResponse> search(AdminBlogFilterRequestDto dto) {
+        return null;
     }
 
 }
