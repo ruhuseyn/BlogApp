@@ -13,7 +13,7 @@ import lombok.experimental.FieldDefaults;
 @Builder
 public class AdminBlogFilterRequestDto {
 
-    String nameKeyword;
-    Long minPublishDate;
-    Long maxPublishDate;
+    String name;
+    Long min;
+    Long max;
 }
