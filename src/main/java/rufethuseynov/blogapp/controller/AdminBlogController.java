@@ -13,10 +13,10 @@ import rufethuseynov.blogapp.dto.request.AdminBlogFilterRequestDto;
 import rufethuseynov.blogapp.dto.request.BlogSaveRequestDto;
 import rufethuseynov.blogapp.dto.response.AdminBlogFilterResponse;
 import rufethuseynov.blogapp.dto.response.AdminBlogReadResponse;
-import rufethuseynov.blogapp.service.serviceImpl.admin.AdminBlogDeleteService;
-import rufethuseynov.blogapp.service.serviceImpl.admin.AdminBlogFilterService;
-import rufethuseynov.blogapp.service.serviceImpl.admin.AdminBlogReadService;
-import rufethuseynov.blogapp.service.serviceImpl.admin.AdminBlogSaveService;
+import rufethuseynov.blogapp.service.admin.AdminBlogDeleteService;
+import rufethuseynov.blogapp.service.admin.AdminBlogFilterService;
+import rufethuseynov.blogapp.service.admin.AdminBlogReadService;
+import rufethuseynov.blogapp.service.admin.AdminBlogSaveService;
 
 import java.util.List;
 
