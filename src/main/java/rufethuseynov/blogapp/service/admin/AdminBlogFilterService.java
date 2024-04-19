@@ -1,4 +1,4 @@
-package rufethuseynov.blogapp.service.serviceImpl.admin;
+package rufethuseynov.blogapp.service.admin;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.criteria.CriteriaBuilder;
