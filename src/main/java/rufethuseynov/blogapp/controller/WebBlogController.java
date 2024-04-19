@@ -12,7 +12,8 @@ import org.springframework.web.bind.annotation.*;
 import rufethuseynov.blogapp.dto.dto.EntityByIdDto;
 import rufethuseynov.blogapp.dto.response.BlogPageResponse;
 import rufethuseynov.blogapp.dto.response.WebBlogReadByIdResponse;
-import rufethuseynov.blogapp.service.serviceImpl.WebBlogServiceImpl;
+import rufethuseynov.blogapp.service.web.WebBlogReadService;
+import rufethuseynov.blogapp.service.web.WebBlogReadAllService;
 
 @Validated
 @RestController
@@ -21,7 +22,8 @@ import rufethuseynov.blogapp.service.serviceImpl.WebBlogServiceImpl;
 @RequestMapping("/api/v1/web")
 public class WebBlogController {
 
-    WebBlogServiceImpl webBlogService;
+    WebBlogReadAllService webBlogReadAllService;
+    WebBlogReadService webBlogReadService;
     Logger logger = LoggerFactory.getLogger(WebBlogController.class);
 
 
@@ -29,13 +31,13 @@ public class WebBlogController {
     @ResponseStatus(HttpStatus.OK)
     public BlogPageResponse getAllBlogs(@RequestParam(value = "page") int page, @RequestParam(value = "count") int count) {
         logger.info("getAll request accepted");
-        return webBlogService.getAllBlogs(page, count);
+        return webBlogReadAllService.getAllBlogs(page, count);
     }
 
     @PostMapping("/read-by-id")
     @ResponseStatus(HttpStatus.OK)
     public WebBlogReadByIdResponse getBlogById(@RequestBody EntityByIdDto dto) {
-        return webBlogService.getBlogById(dto);
+        return webBlogReadService.getBlogById(dto);
     }
 
 
