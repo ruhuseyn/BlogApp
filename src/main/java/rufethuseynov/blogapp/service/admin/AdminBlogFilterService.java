@@ -11,6 +11,7 @@ import rufethuseynov.blogapp.dto.response.AdminBlogFilterResponse;
 import rufethuseynov.blogapp.entity.BlogEntity;
 import rufethuseynov.blogapp.mapper.BlogMapper;
 import rufethuseynov.blogapp.repository.BlogRepository;
+import rufethuseynov.blogapp.utility.BlogEntitySpecification;
 
 import java.util.List;
 
@@ -23,7 +24,9 @@ public class AdminBlogFilterService {
     BlogMapper blogMapper;
 
     public List<AdminBlogFilterResponse> search(AdminBlogFilterRequestDto dto) {
-        return null;
+        return blogRepository
+                .findAll(BlogEntitySpecification.nameLikeAndDateBetween(dto.getName(),dto.getMin(),dto.getMax()))
+                .stream().map(blogMapper::toAdminBlogFilterResponse).toList();
     }
 
 }
