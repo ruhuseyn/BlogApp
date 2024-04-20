@@ -13,6 +13,9 @@ import rufethuseynov.blogapp.mapper.ImageMapper;
 import rufethuseynov.blogapp.repository.BlogRepository;
 import rufethuseynov.blogapp.repository.ImageRepository;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 @RequiredArgsConstructor
@@ -23,9 +26,15 @@ public class WebBlogReadAllService {
 
     public BlogPageResponse getAllBlogs(int page, int count) {
         Page<BlogEntity> userPage = blogRepository.findAll(PageRequest.of(page, count));
+        List<BlogEntity> blogEntityList = new ArrayList<>();
+        for(BlogEntity entity: userPage.getContent()){
+            if(entity.getStatus().equals("A")){
+                blogEntityList.add(entity);
+            }
+        }
 
         return new BlogPageResponse(
-                userPage.getContent().stream().map(blogMapper::blogPageDto).toList(),
+                blogEntityList.stream().map(blogMapper::blogPageDto).toList(),
                 userPage.getTotalElements(),
                 userPage.getTotalPages(),
                 userPage.hasNext()
