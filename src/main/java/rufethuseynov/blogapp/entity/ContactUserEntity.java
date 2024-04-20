@@ -15,7 +15,7 @@ import rufethuseynov.blogapp.utility.CoreEntity;
 @NoArgsConstructor
 @SuperBuilder
 @FieldDefaults(level = AccessLevel.PRIVATE)
-@Entity(name = "blogs")
+@Entity(name = "contact_users")
 public class ContactUserEntity extends CoreEntity {
 
     String name;
