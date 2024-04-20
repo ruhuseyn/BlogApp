@@ -10,6 +10,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import rufethuseynov.blogapp.dto.request.RegisterRequest;
+import rufethuseynov.blogapp.dto.request.UserUpdateRequestDto;
 import rufethuseynov.blogapp.entity.User;
 import rufethuseynov.blogapp.mapper.UserMapper;
 import rufethuseynov.blogapp.repository.UserRepository;
@@ -52,4 +53,10 @@ public class UserService{
         return jwtService.generateToken(user);
     }
 
+    public void updateProfile(UserUpdateRequestDto dto){
+        User user = userRepository.findById(dto.getId()).orElseThrow(() -> new UserNotFoundException("User is not found!"));
+        user.setAge(dto.getAge());
+        user.setFullName(dto.getFullName());
+        userRepository.save(user);
+    }
 }
