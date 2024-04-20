@@ -11,12 +11,17 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import rufethuseynov.blogapp.dto.dto.CreateResponseDto;
 import rufethuseynov.blogapp.dto.dto.EntityByIdDto;
+import rufethuseynov.blogapp.dto.request.ContactUserReadAllRequestDto;
 import rufethuseynov.blogapp.dto.request.ContactUserSaveRequestDto;
 import rufethuseynov.blogapp.dto.response.BlogPageResponse;
 import rufethuseynov.blogapp.dto.response.WebBlogReadByIdResponse;
+import rufethuseynov.blogapp.dto.response.WebContactUserReadAllResponse;
 import rufethuseynov.blogapp.service.web.WebBlogReadService;
 import rufethuseynov.blogapp.service.web.WebBlogReadAllService;
+import rufethuseynov.blogapp.service.web.WebContactUserReadAllService;
 import rufethuseynov.blogapp.service.web.WebContactUserSaveService;
+
+import java.util.List;
 
 @Validated
 @RestController
@@ -28,6 +33,7 @@ public class WebBlogController {
     WebBlogReadAllService webBlogReadAllService;
     WebBlogReadService webBlogReadService;
     WebContactUserSaveService webContactUserSaveService;
+    WebContactUserReadAllService webContactUserReadAllService;
     Logger logger = LoggerFactory.getLogger(WebBlogController.class);
 
 
@@ -45,8 +51,14 @@ public class WebBlogController {
     }
 
     @PostMapping("/contact/save")
-    @ResponseStatus(HttpStatus.OK)
+    @ResponseStatus(HttpStatus.CREATED)
     public CreateResponseDto save(@RequestBody ContactUserSaveRequestDto dto){
         return webContactUserSaveService.save(dto);
+    }
+
+    @PostMapping("/contact/read-all")
+    @ResponseStatus(HttpStatus.OK)
+    public List<WebContactUserReadAllResponse> readAll(ContactUserReadAllRequestDto dto){
+        return webContactUserReadAllService.readAll(dto);
     }
 }
