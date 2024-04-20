@@ -9,10 +9,7 @@ import org.springframework.stereotype.Service;
 import rufethuseynov.blogapp.dto.response.BlogPageResponse;
 import rufethuseynov.blogapp.entity.BlogEntity;
 import rufethuseynov.blogapp.mapper.BlogMapper;
-import rufethuseynov.blogapp.mapper.ImageMapper;
 import rufethuseynov.blogapp.repository.BlogRepository;
-import rufethuseynov.blogapp.repository.ImageRepository;
-
 import java.util.ArrayList;
 import java.util.List;
 
