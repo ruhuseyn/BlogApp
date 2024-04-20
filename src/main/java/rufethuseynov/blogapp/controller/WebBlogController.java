@@ -9,11 +9,14 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import rufethuseynov.blogapp.dto.dto.CreateResponseDto;
 import rufethuseynov.blogapp.dto.dto.EntityByIdDto;
+import rufethuseynov.blogapp.dto.request.ContactUserSaveRequestDto;
 import rufethuseynov.blogapp.dto.response.BlogPageResponse;
 import rufethuseynov.blogapp.dto.response.WebBlogReadByIdResponse;
 import rufethuseynov.blogapp.service.web.WebBlogReadService;
 import rufethuseynov.blogapp.service.web.WebBlogReadAllService;
+import rufethuseynov.blogapp.service.web.WebContactUserSaveService;
 
 @Validated
 @RestController
@@ -24,6 +27,7 @@ public class WebBlogController {
 
     WebBlogReadAllService webBlogReadAllService;
     WebBlogReadService webBlogReadService;
+    WebContactUserSaveService webContactUserSaveService;
     Logger logger = LoggerFactory.getLogger(WebBlogController.class);
 
 
@@ -40,5 +44,9 @@ public class WebBlogController {
         return webBlogReadService.getBlogById(dto);
     }
 
-
+    @PostMapping("/contact/save")
+    @ResponseStatus(HttpStatus.OK)
+    public CreateResponseDto save(@RequestBody ContactUserSaveRequestDto dto){
+        return webContactUserSaveService.save(dto);
+    }
 }
