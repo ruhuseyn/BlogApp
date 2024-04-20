@@ -8,6 +8,7 @@ import rufethuseynov.blogapp.dto.dto.EntityByIdDto;
 import rufethuseynov.blogapp.dto.response.WebBlogReadByIdResponse;
 import rufethuseynov.blogapp.entity.BlogEntity;
 import rufethuseynov.blogapp.entity.ImageEntity;
+import rufethuseynov.blogapp.exception.subexceptions.BlogNotFoundException;
 import rufethuseynov.blogapp.mapper.BlogMapper;
 import rufethuseynov.blogapp.mapper.ImageMapper;
 import rufethuseynov.blogapp.repository.BlogRepository;
@@ -26,7 +27,9 @@ public class WebBlogReadService {
     ImageMapper imageMapper;
 
     public WebBlogReadByIdResponse getBlogById(EntityByIdDto dto) {
-        BlogEntity blogEntity = blogRepository.findById(dto.getId()).get();
+        BlogEntity blogEntity = blogRepository.findById(dto.getId()).orElseThrow(()->new BlogNotFoundException("Blog is not found"));
+        blogEntity.setViewCount(blogEntity.getViewCount()+1);
+        blogRepository.save(blogEntity);
         List<ImageEntity> imageList = imageRepository.findByFkBlogId(blogEntity.getId());
 
         return WebBlogReadByIdResponse
